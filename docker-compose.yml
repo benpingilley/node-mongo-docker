@@ -1,0 +1,24 @@
+    version: '3'
+    services:
+      web:
+        build: .
+        links:
+          - mongodb
+        ports:
+          - 8080:8080
+        environment:
+          - PORT=8080
+
+      mongodb:
+        image: mongo:3.2.6
+        ports:
+          - 27017:27017
+
+      mongo_seed:
+        image: mongo:3.2.6
+        links:
+          - mongodb
+        volumes:
+          - ./mongo-data:/mongo-data
+        command:
+          /mongo-data/import.sh

@@ -1,0 +1,177 @@
+---
+swagger: '2.0'
+info:
+  title: Technical Test
+  description: 'An application which answers several different questions about three different datasets.'
+basePath: /api
+tags:
+  - name: "Birth Names"
+    description: "State, Sex, Name, Year (2010-2016), Occurances of Name"
+  - name: "Census"
+    description: "City, State, State Abbreviation, Populations (2010-2016)"
+  - name: "Consumer Complaints"
+    description: "Company, Date Received, Product, Sub-Product, State, Zip Code"
+
+####### DEFINITIONS ########
+paths:
+  /birthKeys:
+    get:
+      tags:
+        - "Birth Names"
+      summary: What data is available in the birth names dataset?
+      operationId: birthKeys
+      produces:
+        - array
+      responses:
+        '200':
+          description: Data returned
+  /birthsPer/{key}:
+    get:
+      tags:
+        - "Birth Names"
+      summary: How many births happened per Name, State, or Sex? Dataset contains only (2010-2016)
+      operationId: birthsPer
+      produces:
+        - array
+      parameters:
+        - name: key
+          in: path
+          description: name, state, or sex
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Data returned
+  /birthsPerRange/{key}/{startYear}/{endYear}:
+    get:
+      tags:
+        - "Birth Names"
+      summary: How many births happened per Name, State, or Sex from a specified range?
+      operationId: birthsPerRange
+      produces:
+        - array
+      parameters:
+        - name: key
+          in: path
+          description: name, state, or sex
+          required: true
+          type: string
+        - name: startYear
+          in: path
+          description: Start Year (ie 2010)
+          required: true
+          type: integer
+        - name: endYear
+          in: path
+          description: End Year (ie 2016)
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Data returned
+  /complaintKeys:
+    get:
+      tags:
+        - "Consumer Complaints"
+      summary: What data is available in the customer complaints dataset?
+      operationId: complaintKeys
+      produces:
+        - array
+      responses:
+        '200':
+          description: Data returned
+  /availableComplaintGroupValues/{group}:
+    get:
+      tags:
+        - "Consumer Complaints"
+      summary: What [company, product, sub_product, date_received, state, zip_code] are available to group by?
+      operationId: availableComplaintGroupValues
+      produces:
+        - array
+      parameters:
+        - name: group
+          in: path
+          description: company, product, sub_product, date_received, state, or zip_code
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Data returned
+  /mostComplaintsPer/{condKey}/{condValue}/{keyKey}:
+    get:
+      tags:
+        - "Consumer Complaints"
+      summary: How many [company, product, sub_product] complaints per [company, product, sub_product, date, state, zip_code] when equal to [user specified]?
+      operationId: mostComplaintsPer
+      produces:
+        - array
+      parameters:
+        - name: condKey
+          in: path
+          description: company, product, or sub_product
+          required: true
+          type: string
+        - name: condValue
+          in: path
+          description: Value of company, product, or sub_product
+          required: true
+          type: string
+        - name: keyKey
+          in: path
+          description: Group by company, product, sub_product, date_received, state, or zip_code
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Data returned
+  /censusKeys:
+    get:
+      tags:
+        - "Census"
+      summary: What data is available in the census dataset?
+      operationId: censusKeys
+      produces:
+        - array
+      responses:
+        '200':
+          description: Data returned
+  /statesPopulationGrowths/{startYear}/{endYear}:
+    get:
+      tags:
+        - "Census"
+      summary: How much has the state population grown between two years?
+      operationId: statesPopulationGrowths
+      produces:
+        - array
+      parameters:
+        - name: startYear
+          in: path
+          description: Start Year
+          required: true
+          type: integer
+        - name: endYear
+          in: path
+          description: End Year
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Data returned
+  /statesPopulations/{year}:
+    get:
+      tags:
+        - "Census"
+      summary: What were the populations of each state during a specific year?
+      operationId: statePopulation
+      produces:
+        - array
+      parameters:
+        - name: year
+          in: path
+          description: Year
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Data returned
+

@@ -1,0 +1,23 @@
+[
+  {
+    "state":"AK",
+    "sex":"F",
+    "year":2010,
+    "name":"Sophia",
+    "occurrences":60
+  },
+  {
+    "state":"AK",
+    "sex":"F",
+    "year":2010,
+    "name":"Emma",
+    "occurrences":51
+  },
+  {
+    "state":"CO",
+    "sex":"F",
+    "year":2013,
+    "name":"Giada",
+    "occurrences":7
+  }
+]

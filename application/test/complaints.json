@@ -1,0 +1,26 @@
+[
+	{
+		"company":"BANK OF AMERICA, NATIONAL ASSOCIATION",
+		"date_received":"2017-04-03T00:00:00.000",
+		"product":"Bank account or service",
+		"state":"WA",
+		"sub_product":"Checking account",
+		"zip_code":"98052"
+	},
+	{
+		"company":"BANK OF AMERICA, NATIONAL ASSOCIATION",
+		"date_received":"2017-04-18T00:00:00.000",
+		"product":"Bank account or service",
+		"state":"FL",
+		"sub_product":"Checking account",
+		"zip_code":"33908"
+	},
+	{
+		"company":"JPMORGAN CHASE & CO.",
+		"date_received":"2017-06-05T00:00:00.000",
+		"product":"Mortgage",
+		"state":"CT",
+		"sub_product":"Conventional home mortgage",
+		"zip_code":"06850"
+	}
+]
