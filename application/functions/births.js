@@ -1,5 +1,6 @@
 // External Modules
 const mongoist = require('mongoist')
+const config = require('./config')
 
 /**
  * Find number of births grouped by `key`
@@ -7,7 +8,7 @@ const mongoist = require('mongoist')
  * @return {arr} - Objects containing births per `key`
  */
 const birthsPer = async (key) => {
-  const db = mongoist('mongodb://mongodb:27017/datasets')
+  const db = config.dbConnection()
   const data = await db.births.aggregate({
     $group:
     {
@@ -27,7 +28,7 @@ const birthsPer = async (key) => {
  * @return {arr} - Objects containing births per `key`
  */
 const birthsPerRange = async (key, startYear, endYear) => {
-  const db = mongoist('mongodb://mongodb:27017/datasets')
+  const db = config.dbConnection()
   const data = await db.births.group({
     'key': {
         [key]: true,

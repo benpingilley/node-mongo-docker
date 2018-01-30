@@ -1,5 +1,4 @@
-// External Modules
-const mongoist = require('mongoist')
+const config = require('./config')
 
 /**
  * Find available group values for `condValue` in /mostComplaintsPer route
@@ -7,7 +6,7 @@ const mongoist = require('mongoist')
  * @return {arr} - Group values
  */
 const availableComplaintGroupValues = async (group) => {
-  const db = mongoist('mongodb://mongodb:27017/datasets')
+  const db = config.dbConnection()
   const data = await db.runCommand({
     // Find all the distinct group values
     'distinct': 'complaints',
@@ -25,7 +24,7 @@ const availableComplaintGroupValues = async (group) => {
  * @return {arr} - Complaints where `condKey` equals `condValue` grouped by `keyKey`
  */
 const complaintsPer = async (condKey, condValue, keyKey) => {
-  const db = mongoist('mongodb://mongodb:27017/datasets')
+  const db = config.dbConnection()
   const data = await db.complaints.group({
     'key': {
       // Group by this variable

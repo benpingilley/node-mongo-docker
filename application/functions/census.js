@@ -1,5 +1,4 @@
-// External Modules
-const mongoist = require('mongoist')
+const config = require('./config')
 
 /**
  * Find populations for all states during a specific year
@@ -7,7 +6,7 @@ const mongoist = require('mongoist')
  * @return {arr} - Populations of all states
  */
 const statesPopulations = async (year) => {
-  const db = mongoist('mongodb://mongodb:27017/datasets')
+  const db = config.dbConnection()
   const data = await db.census.aggregate({
     $group:
     {
@@ -26,7 +25,7 @@ const statesPopulations = async (year) => {
  * @return {arr} - Populations of all states
  */
 const statesPopulationRanges = async (startYear, endYear) => {
-  const db = mongoist('mongodb://mongodb:27017/datasets')
+  const db = config.dbConnection()
   const data = await db.census.aggregate({
     $group:
     {

@@ -14,22 +14,18 @@ const should = chai.should()
 
 chai.use(chaiHttp)
 
-// Interact with functions directly
-describe('Functions', () => {})
-
-// Interact with function through API endpoint
+/*
 describe('Endpoints', () => {
   describe('/GET birthsPer', () => {
-    /*it('it should get births per 2010', (done) => {
-      const db = require('../functions/db')
-      db.births.insert( { state:"AK", sex:"F", year:2010, name:"Sophia", occurrences:60 } )
+    it('it should get births keys', (done) => {
       chai.request(app.listen())
-        .get('/api/birthsPer/2010')
+        .get('/api/censusKeys')
         .end((err, res) => {
             res.should.have.status(200);
             expect(res.text).eql('Hello');
           done();
         });
-    });*/
+    });
   });
 })
+*/
